@@ -1,13 +1,16 @@
 import random
+import pandas as pd
 
-# Set up initial conditions
-population = int(input())
-infected = int(input())
-recovered = int(input())
-epidemic = False
-prob_spread_without_epidemic = 0.02
-prob_spread_with_epidemic = 0.8
+# Read input data from CSV file
+dataset = pd.read_csv('/Users/omarrizwan/Library/Containers/com.microsoft.Excel/Data/Downloads/worldpopulation.csv')
+country = dataset.loc[0, "country"]
+population = int(dataset.loc[0, 'population'])
+infected = int(dataset.loc[0, 'infected'])
+recovered = int(dataset.loc[0, 'recovered'])
 duration = 14
+prob_spread_without_epidemic = float(dataset.loc[0, 'prob_spread_without_epidemic'])
+prob_spread_with_epidemic = float(dataset.loc[0, 'prob_spread_with_epidemic'])
+epidemic = False
 
 # Simulate the spread of the disease
 for day in range(1, duration + 1):
@@ -39,12 +42,11 @@ for day in range(1, duration + 1):
         epidemic = True
 
     # Print daily statistics
-    print(f"Day {day}: {infected} infected, {recovered} recovered")
+    print(f"Day {day}: {infected} infected, {recovered} recovered in {country}")
 
     # End simulation if everyone is recovered or epidemic has subsided
     if infected == 0 or (epidemic and newly_infected == 0):
         break
-
 
 
 
