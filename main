@@ -1,0 +1,53 @@
+import random
+
+# Set up initial conditions
+population = int(input())
+infected = int(input())
+recovered = int(input())
+epidemic = False
+prob_spread_without_epidemic = 0.02
+prob_spread_with_epidemic = 0.8
+duration = 14
+
+# Simulate the spread of the disease
+for day in range(1, duration + 1):
+    newly_infected = 0
+    newly_recovered = 0
+
+    # Calculate probability of spread based on whether there is an epidemic
+    if epidemic:
+        prob_spread = prob_spread_with_epidemic
+    else:
+        prob_spread = prob_spread_without_epidemic
+
+    # Infect susceptible population
+    for person in range(population - recovered):
+        if random.random() < prob_spread:
+            newly_infected += 1
+
+    # Recover infected population
+    for person in range(infected):
+        if random.random() < 0.1:  # Assuming 10% chance of recovery per day
+            newly_recovered += 1
+
+    # Update population counts
+    infected += newly_infected - newly_recovered
+    recovered += newly_recovered
+
+    # Check if epidemic has started
+    if not epidemic and infected > 10:
+        epidemic = True
+
+    # Print daily statistics
+    print(f"Day {day}: {infected} infected, {recovered} recovered")
+
+    # End simulation if everyone is recovered or epidemic has subsided
+    if infected == 0 or (epidemic and newly_infected == 0):
+        break
+
+
+
+
+
+
+
