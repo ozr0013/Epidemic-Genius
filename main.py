@@ -34,7 +34,7 @@ def calculate():
 
 # Create a Tkinter window
 window = tk.Tk()
-window.title("Simulation")
+window.title("Disease Spread Simulation")
 
 # Create entry fields for user input
 country_label = tk.Label(window, text="Country:")
