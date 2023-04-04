@@ -12,11 +12,24 @@ def outcome (population, infected, duration, spreadRate, recoveryRate):
         # and add them to the infected population
         infected = int((population * spreadRate) + infected)
         # Check if everyone is infected and print a message if true
+        # Calculate the infection rate as a percentage
+        infection_rate = (infected / population) * 100
+        if infection_rate >= 10:
+            quarantine_level = "Level 4 - Full Lockdown."
+        elif infection_rate >= 5:
+            quarantine_level = "Level 3 - Strict Quarantine. Enforce safety protocols to " \
+                               "prevent the need of a full lockdown"
+        elif infection_rate >= 2:
+            quarantine_level = "Level 2 - Moderate Quarantine. "
+        elif infection_rate >= 1:
+            quarantine_level = "Level 1 - Basic Quarantine. Consider enforcing stricter protocols to stop the spread."
+        else:
+            quarantine_level = "No quarantine needed"
         if (infected > population):
             print("Everyone is infected");
         # Otherwise, print the number of infected and recovered individuals for this day
         else:
-            print(f'Day {day}:\n\tInfected: {infected}\n\tRecovered: {recovered}')
+            print(f'Day {day}:\n\tInfected: {infected}\n\tRecovered: {recovered}\n\tQuarantine Level: {quarantine_level}')
     # End of function
 
 # Main function
