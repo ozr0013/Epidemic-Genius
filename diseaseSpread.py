@@ -48,17 +48,27 @@ def calculate():
     result_window.geometry("1000x800")
     result_window.title("Simulation Results")
 
+    # Define colors and font for the label
+    bg_color = "#f2f2f2"  # light gray background
+    fg_color = "#333333"  # dark gray foreground
+    font = ("Arial", 16, "bold")  # font family, size and weight
+
     # Create a label to display the results
     new_output_label = tk.Label(result_window, text=f'{countryName}: \nPopulation of Infected '
                                                     f'(each element represents a day): '
                                                     f'{infected_list}'
                                                     f'\nInfected Percentages (per day): {totalPercentage}'
-                                                    # will be 1 less array length because first day does
-                                                    # not have recovered value
-                                                    f'\nPeople Recovered Each Day: {recoveredPeople}')
-    new_output_label.config(font=("Helvetica", int(result_window.winfo_reqheight() / 10)))
-    new_output_label.pack(pady=30)
-    new_output_label.configure(anchor='center')
+    # will be 1 less array length because first day does
+    # not have recovered value
+                                                    f'\nPeople Recovered Each Day: {recoveredPeople}',
+                                bg=bg_color, fg=fg_color, font=font)
+    new_output_label.pack(pady=50)
+
+    # Center the label in the middle of the window
+    result_window.update_idletasks()
+    x = (result_window.winfo_width() - new_output_label.winfo_width()) // 2
+    y = (result_window.winfo_height() - new_output_label.winfo_height()) - 999 // 2
+    new_output_label.place(x=x, y=y)
 
 # Create a Tkinter window
 window = tk.Tk()
