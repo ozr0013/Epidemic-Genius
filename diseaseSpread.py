@@ -10,14 +10,6 @@ def get_population():
             return int(dataset.loc[index, 'population'])
     return 0
 
-def get_area():
-    # Read input data from CSV file
-    dataset = pd.read_csv('/Applications/Area.csv', delimiter='\t', header=0)
-    # Look up the population of the specified country in the dataset
-    for index, row in dataset.iterrows():
-        if country.get() == row['country']:
-            return int(dataset.loc[index, 'area'])
-    return 0
 def calculate():
     # Get input values from entry fields
     countryName = country.get()
