@@ -1,5 +1,6 @@
 import pandas as pd
 import tkinter as tk
+import chart
 
 def get_population():
     # Read input data from CSV file
