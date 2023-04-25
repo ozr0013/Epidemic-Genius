@@ -68,6 +68,7 @@ def calculate():
     description_window = tk.Tk()
     description_window.title("Description")
     description_window.geometry("800x200")
+    description_window.configure(bg = 'steel blue')
     text_box = tk.Label(description_window, text = f"This chart models {countryName} after {duration} days with"
                                                    f" an infection rate of {spreadRate} and a\nrecover rate of {recoveryRate}."
                                                    f"The initial amount of infected individuals was {initialInfected}."
@@ -77,7 +78,7 @@ def calculate():
                                                    f"from the total infected, and the new infected will be added\n"
                                                    f" This goes on for as many days"
                                                    f" as inputted.\n The end amount of total infected is {infected_label}.")
-    text_box.configure(font=("Arial", 16), justify = 'center', anchor = 'center', padx = 10, pady = 20)
+    text_box.configure(font=("Arial", 16), justify = 'center', anchor = 'center', padx = 10, pady = 20, bg = 'steel blue')
     text_box.pack()
 
 # Create a Tkinter window
