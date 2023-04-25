@@ -35,6 +35,10 @@ def calculate():
         infected = max(infected_list[day] + new_infected - recovered, 0)
         infected_list.append(infected)
 
+    if infected_list[-1] > population:
+        infected_label = "the whole country"
+    else :
+        infected_label = infected_list[-1]
     # Create a new window to display the results
     result_window = tk.Toplevel(window)
     result_window.title("Simulation Results")
@@ -65,14 +69,14 @@ def calculate():
     description_window.title("Description")
     description_window.geometry("800x200")
     text_box = tk.Label(description_window, text = f"This chart models {countryName} after {duration} days with"
-                                                   f"an infection rate of {spreadRate} and a\nrecover rate of {recoveryRate}."
+                                                   f" an infection rate of {spreadRate} and a\nrecover rate of {recoveryRate}."
                                                    f"The initial amount of infected individuals was {initialInfected}."
                                                    f" Each day, the\namount of recovered and newly infected will "
                                                    f"be calculated based off"
                                                    f"the current infected amount,\nthen the recovered people will be subtracted "
                                                    f"from the total infected, and the new infected will be added\n"
                                                    f" This goes on for as many days"
-                                                   f" as inputted.\n The end amount of total infected is {infected_list[-1]}.")
+                                                   f" as inputted.\n The end amount of total infected is {infected_label}.")
     text_box.configure(font=("Arial", 16), justify = 'center', anchor = 'center', padx = 10, pady = 20)
     text_box.pack()
 
