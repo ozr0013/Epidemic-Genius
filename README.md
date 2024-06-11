@@ -31,5 +31,5 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 
 ## Contact
-For any questions or inquiries, please contact omzrrizwan7@gmail.com
+For any questions or inquiries, please contact omarrizwan7@gmail.com
 
